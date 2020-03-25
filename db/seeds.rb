@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Player.new(name: "Lili")
+@player = Player.create(name: "Lili")
 
-Score.new(highscore: 10)
+# Score.create(number: 10, player_id: 1)
 
-PlayerScore.new(player_id: 1, score_id: 1)
+# @player.scores.create(number: 10)
+@score = Score.create(number: 10, player_id: @player.id)

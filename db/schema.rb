@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_000543) do
-
-  create_table "player_scores", force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "score_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["player_id"], name: "index_player_scores_on_player_id"
-    t.index ["score_id"], name: "index_player_scores_on_score_id"
-  end
+ActiveRecord::Schema.define(version: 2020_03_24_232628) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
@@ -28,11 +19,12 @@ ActiveRecord::Schema.define(version: 2020_03_24_000543) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer "highscore"
+    t.integer "number"
+    t.integer "player_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["player_id"], name: "index_scores_on_player_id"
   end
 
-  add_foreign_key "player_scores", "players"
-  add_foreign_key "player_scores", "scores"
+  add_foreign_key "scores", "players"
 end
