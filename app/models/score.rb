@@ -1,24 +1,12 @@
 class Score < ApplicationRecord
   belongs_to :player
 
-  attr_accessor :number
-
-  @@all = []
-
-  def initialize(number)
-    @number = number
-    @@all << self
-  end
-
-  def self.all
-    @@all
-  end
-
   def self.highscores
+    self.all.sort_by(&:number).reverse.take(10)
+  end
 
-    # @@all.sort_by(&:number)
-    return @@all
-
+  def player_name=(name)
+    self.player = Player.find_or_create_by(name: name)
   end
   
 

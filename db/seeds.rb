@@ -6,9 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@player = Player.create(name: "Lili")
+Score.destroy_all
+Player.destroy_all
+
+players = Player.create([
+    {name: "Lili"},
+    {name: "Sam"},
+    {name: "Lee"},
+    {name: "Gabe"},
+    {name: "Joe"},
+    {name: "Dan"}
+])
 
 # Score.create(number: 10, player_id: 1)
 
 # @player.scores.create(number: 10)
-@score = Score.create(number: 10, player_id: @player.id)
+def random_score
+    (5..50).to_a.sample
+end
+
+50.times do 
+    Score.create(number: random_score, player: players.sample)
+end
