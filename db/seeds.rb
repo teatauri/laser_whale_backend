@@ -18,9 +18,6 @@ players = Player.create([
     {name: "Dan"}
 ])
 
-# Score.create(number: 10, player_id: 1)
-
-# @player.scores.create(number: 10)
 def random_score
     (5..50).to_a.sample
 end
